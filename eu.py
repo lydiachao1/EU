@@ -343,14 +343,15 @@ def check(sess_id: str, session: requests.session):
 
 # Telegram Bot Push https://core.telegram.org/bots/api#authorizing-your-bot
 def telegram():
-    data = (("chat_id", TG_USER_ID), ("text", "EUserv续费日志\n\n" + desp))
-    response = requests.post(
-        TG_API_HOST + "/bot" + TG_BOT_TOKEN + "/sendMessage", data=data
+    data = (
+        ('chat_id', TG_USER_ID),
+        ('text', 'EUserv续费日志\n\n' + desp)
     )
+    response = requests.post('https://' + TG_API_HOST + '/bot' + TG_BOT_TOKEN + '/sendMessage', data=data)
     if response.status_code != 200:
-        print("Telegram Bot 推送失败")
+        print('Telegram Bot 推送失败')
     else:
-        print("Telegram Bot 推送成功")
+        print('Telegram Bot 推送成功')
 
 
 def send_mail_by_yandex(
